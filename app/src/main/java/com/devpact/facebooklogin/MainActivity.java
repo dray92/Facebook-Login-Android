@@ -6,6 +6,7 @@ import android.support.v7.app.AppCompatActivity;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.facebook.AccessToken;
 import com.facebook.CallbackManager;
 import com.facebook.FacebookCallback;
 import com.facebook.FacebookException;
@@ -67,6 +68,19 @@ public class MainActivity extends AppCompatActivity {
 
         // initialize textbox
         info = (TextView) findViewById(R.id.info);
+
+        if(isLoggedIn())
+            info.setText("User ID: "
+                    + AccessToken.getCurrentAccessToken().getUserId());
+    }
+
+    /**
+     * Check if user is logged in to Facebook and the AccessToken is active
+     * @return
+     */
+    public boolean isLoggedIn() {
+        AccessToken accessToken = AccessToken.getCurrentAccessToken();
+        return accessToken != null;
     }
 
     /**
