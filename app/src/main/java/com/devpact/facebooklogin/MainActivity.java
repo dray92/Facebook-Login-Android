@@ -80,7 +80,7 @@ public class MainActivity extends AppCompatActivity {
      */
     public boolean isLoggedIn() {
         AccessToken accessToken = AccessToken.getCurrentAccessToken();
-        return accessToken != null;
+        return (accessToken != null) && (!accessToken.isExpired());
     }
 
     /**
